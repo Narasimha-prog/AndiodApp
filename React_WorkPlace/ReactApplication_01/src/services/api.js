@@ -2,16 +2,18 @@
 
 export const authApi = () => {
   window.location.href =
-    'http://localhost:8000/api/auth/google/redirect';
+    'http://localhost:8000/auth/google/redirect';
 };
 
 
 export const fetchUserData = async () => {
   try {
-    const response = await fetch('http://localhost:8000/api/me', {
+    const response = await fetch('http://localhost:8000/me', {
       method: 'GET',
       credentials: 'include', // 🔥 REQUIRED
     });
+
+    console.log('Fetch user data response:', response);
 
     if (!response.ok) {
       throw new Error('Unauthenticated');
